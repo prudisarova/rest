@@ -22,5 +22,5 @@ COPY . .
 # Expose port 8080
 EXPOSE 8080
 
-# Start Vector in the background and the Express service
+# Express service
 CMD npm start
