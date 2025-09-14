@@ -22,8 +22,5 @@ COPY . .
 # Expose port 8080
 EXPOSE 8080
 
-# Build the application (optional, no-op for simple Express apps)
-RUN npm run build
-
 # Start Vector in the background and the Express service
 CMD npm start
