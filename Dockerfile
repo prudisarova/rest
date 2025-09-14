@@ -19,14 +19,6 @@ RUN npm install --frozen-lockfile
 # Copy the rest of the application code
 COPY . .
 
-# Install and configure Vector using the token from the ARG (Railway env var)
-RUN curl -sSL https://telemetry.betterstack.com/setup-vector/docker/${BETTER_STACK_TOKEN} -o /tmp/setup-vector.sh && \
-    bash /tmp/setup-vector.sh && \
-    rm /tmp/setup-vector.sh
-
-# Grant Vector permissions to access Docker logs (if needed in Railway context)
-RUN usermod -a -G docker vector || true
-
 # Expose port 8080
 EXPOSE 8080
 
@@ -34,4 +26,4 @@ EXPOSE 8080
 RUN npm run build
 
 # Start Vector in the background and the Express service
-CMD service vector start && npm start
+CMD npm start
